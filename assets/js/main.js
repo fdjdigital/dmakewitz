@@ -224,17 +224,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
   /* ---------- Floating WhatsApp ---------- */
   var whatsFloat = document.querySelector('.whatsapp-float');
-  var tooltip = document.querySelector('.whatsapp-float__tooltip');
-  var tooltipClose = document.querySelector('.whatsapp-float__tooltip-close');
-
   if (whatsFloat) {
     setTimeout(function () { whatsFloat.classList.add('visible'); }, 2000);
-    setTimeout(function () { if (tooltip) tooltip.classList.add('visible'); }, 4000);
-    if (tooltipClose) {
-      tooltipClose.addEventListener('click', function () {
-        tooltip.classList.remove('visible');
-      });
-    }
   }
 
   /* ---------- Back to top ---------- */

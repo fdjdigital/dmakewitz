@@ -309,33 +309,23 @@ h3 {
   padding: 0 24px;
 }
 
-.hero__eyebrow {
-  font-size: 0.8rem;
-  font-weight: 600;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--coral-rose);
-  margin-bottom: 16px;
+.hero__logo {
+  max-width: 420px;
+  width: 80%;
+  height: auto;
+  margin: 0 auto 24px;
 }
 
-.hero__title {
-  font-size: 4.5rem;
-  font-weight: 700;
-  color: var(--branco);
-  margin-bottom: 4px;
-}
-
-.hero__title span {
-  color: var(--coral-rose);
-}
-
-.hero__subtitle {
-  font-family: 'Playfair Display', serif;
-  font-style: italic;
-  font-size: 1.5rem;
-  color: rgba(255, 255, 255, 0.8);
-  margin-bottom: 16px;
-  font-weight: 400;
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 
 .hero__tagline {
