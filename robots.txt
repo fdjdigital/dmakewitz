@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://vanttmkt.com.br/denise-makewitz/sitemap.xml
+Sitemap: https://vanttmkt.com.br/sitemap.xml
