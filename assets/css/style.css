@@ -1081,9 +1081,12 @@ h3 {
 /* ---------- Responsive ---------- */
 @media (max-width: 1024px) {
   .header__nav { display: none; }
+  .header__cta { display: none; }
   .header__toggle { display: block; }
 
-  .hero__title { font-size: 3.5rem; }
+  .header__logo, .header__logo img { height: 44px; }
+  .header--scrolled .header__logo,
+  .header--scrolled .header__logo img { height: 36px; }
 
   .about__grid { grid-template-columns: 1fr; gap: 40px; }
   .about__image-wrapper { max-width: 400px; margin: 0 auto; }
@@ -1102,8 +1105,17 @@ h3 {
 
   .section { padding: 60px 0; }
 
-  .hero__title { font-size: 2.8rem; }
-  .hero__subtitle { font-size: 1.2rem; }
+  .header { padding: 10px 0; }
+  .header--scrolled { padding: 6px 0; }
+  .header__logo, .header__logo img { height: 36px; }
+  .header--scrolled .header__logo,
+  .header--scrolled .header__logo img { height: 30px; }
+
+  .hero { min-height: auto; aspect-ratio: 9 / 16; max-height: 100vh; }
+  .hero__logo { max-width: 280px; }
+  .hero__tagline { font-size: 1rem; margin-bottom: 24px; }
+  .hero__cta { padding: 14px 28px; font-size: 0.9rem; }
+  .hero__scroll { bottom: 16px; }
 
   .about__stats { grid-template-columns: repeat(2, 1fr); }
 
