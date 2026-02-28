@@ -27,25 +27,38 @@ document.addEventListener('DOMContentLoaded', function () {
   var mobileMenu = document.querySelector('.mobile-menu');
   var mobileClose = document.querySelector('.mobile-menu__close');
 
+  function closeMenu() {
+    mobileMenu.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
   if (toggle && mobileMenu) {
     toggle.addEventListener('click', function () {
       mobileMenu.classList.add('active');
       document.body.style.overflow = 'hidden';
     });
-    mobileClose.addEventListener('click', function () {
-      mobileMenu.classList.remove('active');
-      document.body.style.overflow = '';
-    });
+    mobileClose.addEventListener('click', closeMenu);
+
     mobileMenu.querySelectorAll('a').forEach(function (link) {
-      link.addEventListener('click', function () {
-        mobileMenu.classList.remove('active');
-        document.body.style.overflow = '';
+      link.addEventListener('click', function (e) {
+        var href = this.getAttribute('href');
+        closeMenu();
+        /* Links internos (#): fecha menu, espera transição, depois scroll */
+        if (href && href.charAt(0) === '#') {
+          e.preventDefault();
+          var target = document.querySelector(href);
+          if (target) {
+            setTimeout(function () {
+              target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }, 350);
+          }
+        }
       });
     });
   }
 
-  /* ---------- Smooth scroll for anchor links ---------- */
-  document.querySelectorAll('a[href^="#"]').forEach(function (a) {
+  /* ---------- Smooth scroll for anchor links (desktop) ---------- */
+  document.querySelectorAll('.header__nav a[href^="#"]').forEach(function (a) {
     a.addEventListener('click', function (e) {
       var target = document.querySelector(this.getAttribute('href'));
       if (target) {
