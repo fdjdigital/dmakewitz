@@ -145,11 +145,22 @@ h3 {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
 }
 
 .header__logo {
   height: 40px;
   width: auto;
+  display: flex;
+  align-items: center;
+}
+
+.header__logo img {
+  height: 40px;
+  width: auto;
+  object-fit: contain;
 }
 
 .header--scrolled .header__logo-white { display: none; }
@@ -847,6 +858,32 @@ h3 {
   margin-top: 8px;
 }
 
+/* --- Contact on verde background overrides --- */
+.section--verde .eyebrow { color: rgba(255, 255, 255, 0.7); }
+.section--verde h2 { color: var(--branco); }
+.section--verde .section__subtitle { color: rgba(255, 255, 255, 0.8); }
+.section--verde .form-group label { color: rgba(255, 255, 255, 0.9); }
+
+.section--verde .contact__card {
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: none;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.section--verde .contact__card-icon {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.section--verde .contact__card-title { color: var(--branco); }
+.section--verde .contact__card-text { color: rgba(255, 255, 255, 0.8); }
+.section--verde .contact__card-text a { color: rgba(255, 255, 255, 0.8); }
+.section--verde .contact__card-text a:hover { color: var(--coral-rose); }
+
+.section--verde .contact__quote {
+  color: rgba(255, 255, 255, 0.85);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
 /* ---------- Footer ---------- */
 .footer {
   background-color: var(--verde-oliva);
@@ -1075,4 +1112,24 @@ h3 {
 .fade-in--visible {
   opacity: 1;
   transform: translateY(0);
+}
+
+/* Stagger children inside visible fade-in */
+.fade-in--visible .service-card,
+.fade-in--visible .stat-card {
+  animation: slideUp 0.5s ease forwards;
+  opacity: 0;
+}
+.fade-in--visible .service-card:nth-child(1),
+.fade-in--visible .stat-card:nth-child(1) { animation-delay: 0s; }
+.fade-in--visible .service-card:nth-child(2),
+.fade-in--visible .stat-card:nth-child(2) { animation-delay: 0.1s; }
+.fade-in--visible .service-card:nth-child(3),
+.fade-in--visible .stat-card:nth-child(3) { animation-delay: 0.2s; }
+.fade-in--visible .service-card:nth-child(4),
+.fade-in--visible .stat-card:nth-child(4) { animation-delay: 0.3s; }
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
 }

@@ -73,34 +73,56 @@ document.addEventListener('DOMContentLoaded', function () {
 
   /* ---------- Counter animation ---------- */
   var counters = document.querySelectorAll('[data-count]');
-  var observed = new Set();
+  var observedCounters = new Set();
 
-  var counterObserver = new IntersectionObserver(function (entries) {
-    entries.forEach(function (entry) {
-      if (entry.isIntersecting && !observed.has(entry.target)) {
-        observed.add(entry.target);
-        var el = entry.target;
-        var target = parseInt(el.getAttribute('data-count'), 10);
-        var prefix = el.getAttribute('data-prefix') || '';
-        var suffix = el.getAttribute('data-suffix') || '';
-        var duration = 1500;
-        var start = 0;
-        var startTime = null;
+  function startCounter(el) {
+    if (observedCounters.has(el)) return;
+    observedCounters.add(el);
+    var target = parseInt(el.getAttribute('data-count'), 10);
+    var prefix = el.getAttribute('data-prefix') || '';
+    var suffix = el.getAttribute('data-suffix') || '';
+    var duration = 1500;
+    var startTime = null;
 
-        function animateCount(ts) {
-          if (!startTime) startTime = ts;
-          var progress = Math.min((ts - startTime) / duration, 1);
-          var value = Math.floor(progress * target);
-          el.textContent = prefix + value + suffix;
-          if (progress < 1) requestAnimationFrame(animateCount);
-          else el.textContent = prefix + target + suffix;
+    el.textContent = prefix + '0' + suffix;
+
+    function animateCount(ts) {
+      if (!startTime) startTime = ts;
+      var progress = Math.min((ts - startTime) / duration, 1);
+      var value = Math.floor(progress * target);
+      el.textContent = prefix + value + suffix;
+      if (progress < 1) requestAnimationFrame(animateCount);
+      else el.textContent = prefix + target + suffix;
+    }
+    requestAnimationFrame(animateCount);
+  }
+
+  /* Observe the stats container — only fire counters after fade-in is visible */
+  var statsContainer = document.querySelector('.about__stats');
+  if (statsContainer) {
+    var statsObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting && entry.target.classList.contains('fade-in--visible')) {
+          counters.forEach(function (c) { startCounter(c); });
+          statsObserver.disconnect();
         }
-        requestAnimationFrame(animateCount);
+      });
+    }, { threshold: 0.3 });
+
+    /* Re-check after fade-in class is added (MutationObserver) */
+    var mutObs = new MutationObserver(function () {
+      if (statsContainer.classList.contains('fade-in--visible')) {
+        /* Small delay so stagger animation of cards plays first */
+        setTimeout(function () {
+          counters.forEach(function (c) { startCounter(c); });
+        }, 400);
+        mutObs.disconnect();
+        statsObserver.disconnect();
       }
     });
-  }, { threshold: 0.3 });
-
-  counters.forEach(function (c) { counterObserver.observe(c); });
+    mutObs.observe(statsContainer, { attributes: true, attributeFilter: ['class'] });
+    statsObserver.observe(statsContainer);
+  }
 
   /* ---------- Portfolio lightbox ---------- */
   var lightbox = document.querySelector('.lightbox');
@@ -190,12 +212,12 @@ document.addEventListener('DOMContentLoaded', function () {
     form.addEventListener('submit', function (e) {
       e.preventDefault();
       var fd = new FormData(form);
-      var msg = 'Olá! Meu nome é ' + fd.get('name') + '.\n\n';
-      if (fd.get('eventType')) msg += 'Tipo de evento: ' + fd.get('eventType') + '\n';
-      if (fd.get('date')) msg += 'Data: ' + fd.get('date') + '\n';
-      if (fd.get('message')) msg += '\nMensagem: ' + fd.get('message') + '\n';
+      var msg = 'Olá! Meu nome é ' + fd.get('nome') + '.\n\n';
+      if (fd.get('tipo-evento')) msg += 'Tipo de evento: ' + fd.get('tipo-evento') + '\n';
+      if (fd.get('data-evento')) msg += 'Data: ' + fd.get('data-evento') + '\n';
+      if (fd.get('mensagem')) msg += '\nMensagem: ' + fd.get('mensagem') + '\n';
       if (fd.get('email')) msg += '\nEmail: ' + fd.get('email');
-      if (fd.get('phone')) msg += '\nTelefone: ' + fd.get('phone');
+      if (fd.get('telefone')) msg += '\nTelefone: ' + fd.get('telefone');
       window.open('https://wa.me/5551999999999?text=' + encodeURIComponent(msg), '_blank');
     });
   }
