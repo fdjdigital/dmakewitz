@@ -231,7 +231,7 @@ document.addEventListener('DOMContentLoaded', function () {
       if (fd.get('mensagem')) msg += '\nMensagem: ' + fd.get('mensagem') + '\n';
       if (fd.get('email')) msg += '\nEmail: ' + fd.get('email');
       if (fd.get('telefone')) msg += '\nTelefone: ' + fd.get('telefone');
-      window.open('https://wa.me/5551999999999?text=' + encodeURIComponent(msg), '_blank');
+      window.open('https://wa.me/5551982253723?text=' + encodeURIComponent(msg), '_blank');
     });
   }
 

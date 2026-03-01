@@ -487,6 +487,22 @@ h3 {
   margin-top: 4px;
 }
 
+/* ---------- Video ---------- */
+.video__wrapper {
+  max-width: 400px;
+  margin: 0 auto;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  aspect-ratio: 9 / 16;
+}
+
+.video__wrapper iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
 /* ---------- Services ---------- */
 .services__grid {
   display: grid;
@@ -509,12 +525,12 @@ h3 {
   border-color: rgba(212, 165, 165, 0.3);
 }
 
-.service-card__number {
-  font-family: 'Playfair Display', serif;
-  font-size: 2.5rem;
-  font-weight: 700;
-  color: rgba(212, 165, 165, 0.35);
-  margin-bottom: 12px;
+.service-card__icon {
+  display: block;
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  margin-bottom: 16px;
 }
 
 .service-card__title {
