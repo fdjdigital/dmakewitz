@@ -5,7 +5,7 @@
 
 /* ---------- CSS Variables ---------- */
 :root {
-  --verde-oliva: #6A5F3F;
+  --verde-oliva: #4A5F3F;
   --coral-rose: #D4A5A5;
   --off-white: #FAFAF8;
   --creme: #F5F0E8;
@@ -209,7 +209,7 @@ h3 {
 }
 
 .header__cta:hover {
-  background-color: #5a5035;
+  background-color: #3a4f2f;
 }
 
 /* Mobile menu toggle */
@@ -364,7 +364,7 @@ h3 {
 
 .hero__cta:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(106, 95, 63, 0.3);
+  box-shadow: 0 8px 24px rgba(74, 95, 63, 0.3);
 }
 
 .hero__scroll {
@@ -575,7 +575,7 @@ h3 {
 .portfolio__overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, rgba(106, 95, 63, 0.7), transparent);
+  background: linear-gradient(to top, rgba(74, 95, 63, 0.7), transparent);
   opacity: 0;
   transition: opacity 0.3s ease;
   display: flex;
@@ -730,7 +730,7 @@ h3 {
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: rgba(106, 95, 63, 0.25);
+  background: rgba(74, 95, 63, 0.25);
   border: none;
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.3s ease;
@@ -805,7 +805,7 @@ h3 {
 
 .form__submit:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(106, 95, 63, 0.3);
+  box-shadow: 0 8px 24px rgba(74, 95, 63, 0.3);
 }
 
 /* Contact info side */
@@ -827,7 +827,7 @@ h3 {
 
 .contact__whatsapp-btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(106, 95, 63, 0.3);
+  box-shadow: 0 8px 24px rgba(74, 95, 63, 0.3);
 }
 
 .contact__card {
@@ -1031,7 +1031,7 @@ h3 {
 }
 
 .back-to-top.visible { display: flex; }
-.back-to-top:hover { background: #5a5035; transform: translateY(-2px); }
+.back-to-top:hover { background: #3a4f2f; transform: translateY(-2px); }
 
 /* ---------- Floating WhatsApp ---------- */
 .whatsapp-float {
