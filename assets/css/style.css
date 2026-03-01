@@ -663,9 +663,15 @@ h3 {
   border-left: 4px solid var(--coral-rose);
 }
 
-.testimonial-card__emoji {
-  font-size: 2rem;
-  margin-bottom: 12px;
+.testimonial-card__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  background: rgba(212, 165, 165, 0.1);
+  border-radius: 50%;
+  margin-bottom: 16px;
 }
 
 .testimonial-card__title {
