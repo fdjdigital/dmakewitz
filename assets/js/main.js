@@ -249,6 +249,18 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
+  /* ---------- Video autoplay on scroll ---------- */
+  var videoIframe = document.getElementById('video-iframe');
+  if (videoIframe) {
+    var videoObserver = new IntersectionObserver(function (entries) {
+      if (entries[0].isIntersecting && !videoIframe.src) {
+        videoIframe.src = videoIframe.getAttribute('data-src');
+        videoObserver.disconnect();
+      }
+    }, { threshold: 0.3 });
+    videoObserver.observe(videoIframe);
+  }
+
   /* ---------- Fade-in on scroll ---------- */
   var fadeEls = document.querySelectorAll('.fade-in');
   var fadeObserver = new IntersectionObserver(function (entries) {
